@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { Map, TileLayer, Marker} from 'react-leaflet'
+import { Map, TileLayer, Marker } from 'react-leaflet'
 import MarkerClusterGroup from './MarkerClusterGroup.jsx'
 import MaskPopup from './MaskPopup.jsx'
 
-import {MaskContext} from '../Context.js'
+import { MaskContext } from '../Context.js'
 import L from 'leaflet'
 
 import './MarkerCluster.scss'
@@ -36,20 +36,20 @@ const markerClusterObject = {
     }
 }
 const MaskMap = () => {
-    const [position, setPosition] = useState([defaultState.lat, defaultState.lng]);
-    const {data} = useContext(MaskContext)
+
+    const { data, position, zoom } = useContext(MaskContext)
 
     return (
-        <Map center={position} zoom={defaultState.zoom} maxZoom={30}>
+        <Map center={position} zoom={zoom} maxZoom={40}>
             <TileLayer attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             ></TileLayer>
             <MarkerClusterGroup setMarkerClusterObject={markerClusterObject}>
-                {data?data.map(({geometry,properties})=>{
-                    return <Marker position={[geometry.coordinates[1],geometry.coordinates[0]]} key={properties.id}>
-                        <MaskPopup {...properties}/>
+                {data ? data.map(({ geometry, properties }) => {
+                    return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id}>
+                        <MaskPopup {...properties} />
                     </Marker>
-                }):null}
+                }) : null}
             </MarkerClusterGroup>
         </Map>
     );
