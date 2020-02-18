@@ -1,18 +1,23 @@
-import React,{useContext} from 'react';
+import React, { useContext, useMemo } from 'react';
 import './PharmacyList.scss'
-import {MaskContext} from '../Context.js'
+import { MaskContext } from '../Context.js'
 
 const PharamcyItem = ({ item }) => {
-    const {setPosition} = useContext(MaskContext)
+    const { position, setPosition, setMarkerClose } = useContext(MaskContext)
     const { properties, geometry } = item
-    function goLocation(){
-        setPosition({
-            location:[geometry.coordinates[1],geometry.coordinates[0]],
-            zoom:18
-        })
+    function goLocation() {
+        if (position[0] !== geometry.coordinates[1] && position[1] !== geometry.coordinates[0]) {
+            setPosition({
+                location: [geometry.coordinates[1], geometry.coordinates[0]],
+                zoom: 18,
+            })
+            setMarkerClose(true)
+        } else {
+            return
+        }
     }
     return (<li>
-        <h2 onClick={()=>goLocation()}>{properties.name}</h2>
+        <h2 onClick={() => goLocation()}>{properties.name}</h2>
         <h3>{properties.address}</h3>
         <h3>{properties.phone}</h3>
         <div>
@@ -29,9 +34,9 @@ const PharamcyItem = ({ item }) => {
 }
 
 const PharmacyList = ({ data, county, town }) => {
-    const list = county && town ? data.filter(({ properties }) => {
+    const list = useMemo(() => county && town ? data.filter(({ properties }) => {
         return properties.county === county && properties.town === town
-    }) : []
+    }) : [], [town, data, county])
     return (
         <ul className="pharmacy-list">
             {list.map(item => (<PharamcyItem item={item} key={item.properties.id} />))}

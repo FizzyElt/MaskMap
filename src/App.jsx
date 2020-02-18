@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import MaskMap from './component/MaskMap.jsx'
 import PharmacySearch from './component/PharmacySearch.jsx'
 import Loading from "./component/Loading.jsx"
@@ -15,9 +15,10 @@ const App = () => {
     const [maskData, setMaskData] = useState([])
     const [position, setPosition] = useState({
         location: [defaultState.lat, defaultState.lng],
-        zoom: defaultState.zoom
+        zoom: defaultState.zoom,
     })
-    const [isLoading,setIsLoading]=useState(true)
+    const [markerClose,setMarkerClose]=useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         getData()
             .then(res => {
@@ -33,14 +34,16 @@ const App = () => {
             {
                 data: maskData,
                 position: position.location,
-                zoom:position.zoom,
-                setPosition: (obj) => { setPosition(obj) }
+                zoom: position.zoom,
+                markerClose:markerClose,
+                setPosition: (obj) => { setPosition(obj) },
+                setMarkerClose:(sw)=>{setMarkerClose(sw)}
             }
         }>
             <div className="container">
                 <MaskMap />
                 <PharmacySearch />
-                {isLoading?<Loading/>:null}
+                {isLoading ? <Loading /> : null}
             </div>
         </MaskContext.Provider>
     );

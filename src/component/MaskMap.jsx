@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Map, TileLayer, Marker } from 'react-leaflet'
 import MarkerClusterGroup from './MarkerClusterGroup.jsx'
 import MaskPopup from './MaskPopup.jsx'
@@ -8,12 +8,9 @@ import L from 'leaflet'
 
 import './MarkerCluster.scss'
 
-const defaultState = {
-    lat: 22.779538,
-    lng: 120.352170,
-    zoom: 13
-}
 const markerClusterObject = {
+    chunkedLoading: true,
+    removeOutsideVisibleBounds: true,
     iconCreateFunction: function (cluster) {
         const count = cluster.getChildCount()
         let clusterSize = {
@@ -37,20 +34,35 @@ const markerClusterObject = {
 }
 const MaskMap = () => {
 
-    const { data, position, zoom } = useContext(MaskContext)
-
+    const { data, position, zoom, markerClose, setMarkerClose } = useContext(MaskContext)
+    const markerClusterGroup = useMemo(() => {
+        return <MarkerClusterGroup setMarkerClusterObject={markerClusterObject}>
+            {data.map(({ geometry, properties }) => {
+                return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id}>
+                    <MaskPopup {...properties} />
+                </Marker>
+            })}
+        </MarkerClusterGroup>
+    }, [data])
     return (
-        <Map center={position} zoom={zoom} maxZoom={40}>
-            <TileLayer attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        <Map center={[22.779538,
+            120.352170]}
+            zoom={12}
+            maxZoom={40}
+            duration={3}
+            viewport={{
+                center: position,
+                zoom: zoom
+            }}
+            useFlyTo={true}
+            onViewportChanged={() => { setMarkerClose(false) }}
+        >
+            <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             ></TileLayer>
-            <MarkerClusterGroup setMarkerClusterObject={markerClusterObject}>
-                {data ? data.map(({ geometry, properties }) => {
-                    return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id}>
-                        <MaskPopup {...properties} />
-                    </Marker>
-                }) : null}
-            </MarkerClusterGroup>
+            {
+                markerClose ? null : markerClusterGroup
+            }
         </Map>
     );
 }

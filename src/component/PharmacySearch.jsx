@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState} from 'react';
 import './PharmacySearch.scss'
 import SearchBox from './SearchBox.jsx'
 import PharmacyList from './PharmacyList.jsx'
@@ -24,11 +24,10 @@ const PharmacySearch = () => {
     const [county, setCounty] = useState("")
     const [town, setTown] = useState("");
 
-
     return (
         <div className={"pharmacy-container " + (control ? "" : "close")}>
             <Today />
-            <SearchBox options={data ? optionsfilter(data) : []}
+            <SearchBox options={optionsfilter(data)}
                 county={county}
                 setCounty={setCounty}
                 setTown={setTown} />
