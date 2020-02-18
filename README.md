@@ -1,3 +1,23 @@
+## 網頁前端精神時光屋 第十關 口罩地圖
+
+### [作品連結](https://taiwan-mask-map.netlify.com/)
+
+### 特殊問題
+
+* 修改react-leaflet-markercluster原始碼讓leaflet.markercluster套件可接收react組件(已解決)
+* 位置傳送功能反應速度較慢(已解決)
+
+### 使用工具及框架
+
+* React
+* Leaflet
+* Leaflet.markercluster
+* react-leaflet
+* axios
+* react-select
+* SCSS
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
