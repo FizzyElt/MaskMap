@@ -15,3 +15,15 @@
     align-items: center;
   }
 }
+@media screen and(max-width:450px){
+  .select-box{
+    .select{
+      width: 90px;
+    }
+    span{
+      margin: 8px;
+      font-size: 16px;
+    }
+  }
+}
+

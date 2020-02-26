@@ -17,9 +17,8 @@ const App = () => {
         location: [defaultState.lat, defaultState.lng],
         zoom: defaultState.zoom,
     })
-    const [markerClose,setMarkerClose]=useState(false)
     const [isLoading, setIsLoading] = useState(true)
-    useEffect(() => {
+    useEffect(() => {   //獲取資料
         getData()
             .then(res => {
                 setMaskData(res)
@@ -29,15 +28,25 @@ const App = () => {
 
             })
     }, []);
+    useEffect(() => {       //獲取使用者位置
+        if (!isLoading) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((p) => {
+                    setPosition({
+                        location: [p.coords.latitude, p.coords.longitude],
+                        zoom: 18
+                    })
+                })
+            }
+        }
+    }, [isLoading])
     return (
         <MaskContext.Provider value={
             {
                 data: maskData,
                 position: position.location,
                 zoom: position.zoom,
-                markerClose:markerClose,
                 setPosition: (obj) => { setPosition(obj) },
-                setMarkerClose:(sw)=>{setMarkerClose(sw)}
             }
         }>
             <div className="container">

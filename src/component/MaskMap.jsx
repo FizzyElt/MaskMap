@@ -9,7 +9,7 @@ import L from 'leaflet'
 import './MarkerCluster.scss'
 
 const markerClusterObject = {
-    chunkedLoading: true,
+    chunkedLoading: false,
     removeOutsideVisibleBounds: true,
     iconCreateFunction: function (cluster) {
         const count = cluster.getChildCount()
@@ -34,7 +34,7 @@ const markerClusterObject = {
 }
 const MaskMap = () => {
 
-    const { data, position, zoom, markerClose, setMarkerClose } = useContext(MaskContext)
+    const { data, position, zoom} = useContext(MaskContext)
     const markerClusterGroup = useMemo(() => {
         return <MarkerClusterGroup setMarkerClusterObject={markerClusterObject}>
             {data.map(({ geometry, properties }) => {
@@ -54,14 +54,12 @@ const MaskMap = () => {
                 center: position,
                 zoom: zoom
             }}
-            useFlyTo={true}
-            onViewportChanged={() => { setMarkerClose(false) }}
         >
             <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             ></TileLayer>
             {
-                markerClose ? null : markerClusterGroup
+               markerClusterGroup
             }
         </Map>
     );

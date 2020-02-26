@@ -38,12 +38,22 @@
     }
     h3:first-child {
       background-color: #73c0d8;
+      margin-right: 5px;
     }
     h3:last-of-type {
       background-color: #ffa573;
     }
     h3.no-mask {
       background-color: #a5a5a5;
+    }
+  }
+}
+@media screen and (max-width:450px){
+  .pharmacy-list{
+    div{
+      h3{
+        font-size: 15px;
+      }
     }
   }
 }

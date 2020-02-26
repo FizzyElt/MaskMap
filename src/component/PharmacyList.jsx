@@ -3,7 +3,7 @@ import './PharmacyList.scss'
 import { MaskContext } from '../Context.js'
 
 const PharamcyItem = ({ item }) => {
-    const { position, setPosition, setMarkerClose } = useContext(MaskContext)
+    const { position, setPosition } = useContext(MaskContext)
     const { properties, geometry } = item
     function goLocation() {
         if (position[0] !== geometry.coordinates[1] && position[1] !== geometry.coordinates[0]) {
@@ -11,7 +11,7 @@ const PharamcyItem = ({ item }) => {
                 location: [geometry.coordinates[1], geometry.coordinates[0]],
                 zoom: 18,
             })
-            setMarkerClose(true)
+            
         } else {
             return
         }
