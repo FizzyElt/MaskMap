@@ -3,11 +3,12 @@ import { Map, TileLayer, Marker } from 'react-leaflet'
 import MarkerClusterGroup from './MarkerClusterGroup.jsx'
 import MaskPopup from './MaskPopup.jsx'
 
-import { MaskContext } from '../Context.js'
+import { MaskContext } from '../../Context.js'
 import L from 'leaflet'
 
 import './MarkerCluster.scss'
 
+//markerCluster設定檔
 const markerClusterObject = {
     chunkedLoading: false,
     removeOutsideVisibleBounds: true,
