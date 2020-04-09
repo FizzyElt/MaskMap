@@ -1,0 +1,41 @@
+.mask-popup{
+    >*+*{
+        margin-top: 10px;;
+    }
+    h3{
+        color: #666666;
+    }
+    h3:last-of-type{
+        text-align: center;
+    }
+}
+.popup-container{
+    width: fit-content;
+}
+.mask-box{
+    display: flex;
+    h2{
+        padding:0 10px;
+        font-size: 15px;
+        color: white;
+        height: 30px;
+        line-height: 1.8;
+        text-align: center;
+        display: flex;
+        width: 120px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    h2:first-child{
+        margin-right: 10px;
+        border-radius:15px;
+        background-color: #73C0D8;
+    }
+    h2:last-of-type{
+        border-radius: 15px;
+        background-color: #FFA573;
+    }
+    h2.no-mask{
+        background-color: #A5A5A5;
+    }
+}
