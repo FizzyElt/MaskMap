@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import MaskMap from './component/MaskMap.jsx'
-import PharmacySearch from './component/PharmacySearch.jsx'
-import Loading from "./component/Loading.jsx"
+import MaskMap from './component/Map/MaskMap.jsx'
+import PharmacySearch from './component/PharmacySearch/PharmacySearch.jsx'
+import Loading from "./component/Loading/Loading.jsx"
 import { getData } from './fetchData.js'
 import { MaskContext } from './Context.js'
 
