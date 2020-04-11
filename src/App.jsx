@@ -18,14 +18,14 @@ const App = () => {
         zoom: defaultState.zoom,
     })
     const [isLoading, setIsLoading] = useState(true)
-    useEffect(() => {   //獲取資料
+    useEffect(() => {   //獲取資料 
         getData()
             .then(res => {
                 setMaskData(res)
                 setIsLoading(false)
             })
             .catch(e => {
-
+                
             })
     }, []);
     useEffect(() => {       //獲取使用者位置
@@ -41,6 +41,7 @@ const App = () => {
         }
     }, [isLoading])
     return (
+        
         <MaskContext.Provider value={
             {
                 data: maskData,
