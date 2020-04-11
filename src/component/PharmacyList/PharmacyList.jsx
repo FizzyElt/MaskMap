@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import './PharmacyList.scss'
-import { MaskContext } from '../Context.js'
+import { MaskContext } from '../../Context.js'
 
 const PharamcyItem = ({ item }) => {
     const { position, setPosition } = useContext(MaskContext)
