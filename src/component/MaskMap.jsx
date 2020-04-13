@@ -48,7 +48,7 @@ const MaskMap = () => {
           });
 
         return <MarkerClusterGroup setMarkerClusterObject={markerClusterObject}>
-            {data.map(({ geometry, properties, mask_adult }) => {
+            {data.map(({ geometry, properties }) => {
                 console.log(properties.mask_adult)
                 if(properties.mask_adult===0){
                     return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id} icon={greyIcon}>
