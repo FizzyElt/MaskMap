@@ -24,7 +24,7 @@ const Today = () => {
         let day = date.getDate()
         return {
             today: year + "-" + (mon < 10 ? "0" + mon.toString() : mon) + "-" + (day < 10 ? "0" + day.toString() : day),
-            weekDay: date.getDay() + 1
+            weekDay: date.getDay() 
         }
     })()
     return (

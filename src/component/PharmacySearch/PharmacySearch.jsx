@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import './PharmacySearch.scss'
 import SearchBox from './SearchBox.jsx'
 import PharmacyList from '../PharmacyList/PharmacyList.jsx'
@@ -11,7 +11,8 @@ function optionsfilter(arr) {
     const result = arr.map(({ properties }) => {
         return {
             county: properties.county,
-            town: properties.town
+            town: properties.town,
+            cunli: properties.cunli
         }
     })
     return result
@@ -22,7 +23,8 @@ const PharmacySearch = () => {
     const { data } = useContext(MaskContext)
     const [control, setControl] = useState(true)
     const [county, setCounty] = useState("")
-    const [town, setTown] = useState("");
+    const [town, setTown] = useState("")
+    const [cunli, setCunli] = useState("");
 
     return (
         <div className={"pharmacy-container " + (control ? "" : "close")}>
@@ -30,8 +32,11 @@ const PharmacySearch = () => {
             <SearchBox options={optionsfilter(data)}
                 county={county}
                 setCounty={setCounty}
-                setTown={setTown} />
-            <PharmacyList data={data} county={county} town={town} />
+                setTown={setTown} 
+                setCunli={setCunli}
+                />
+            <PharmacyList data={data} county={county} town={town} cunli={cunli}
+             />
             <button onClick={() => setControl(!control)}>&#10093;</button>
         </div>
     );
