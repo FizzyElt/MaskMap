@@ -31,6 +31,7 @@ const PharmacySearch = () => {
             <Today />
             <SearchBox options={optionsfilter(data)}
                 county={county}
+                town={town}
                 setCounty={setCounty}
                 setTown={setTown} 
                 setCunli={setCunli}

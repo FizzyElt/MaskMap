@@ -4,7 +4,6 @@ import './SearchBox.scss'
 
 function getCountyOptions(arr) {    //獲取縣市列表(不重複)
     const set = new Set()
-
     return arr.filter(({ county }) => !set.has(county) ? set.add(county) : false).reduce((result, { county }) => {
         if (county) {
             result.push({
@@ -27,11 +26,16 @@ function getTownOptions(arr, location) { //獲取地區列表
             }
         })
 }
-function getCunliOptions(arr, location) { //獲取里列表
+function getCunliOptions(arr, location, li) { //獲取里列表
     const set = new Set()
-    return arr.filter(({ town }) => {
-        return town === location
-    }).filter(({ cunli }) => !set.has(cunli) ? set.add(cunli) : false)
+    return arr.filter(({ county }) => {
+        return county === location
+    })
+    .filter(({town}) =>{
+        console.log(town)
+        return town === li
+    }
+    ).filter(({ cunli }) => !set.has(cunli) ? set.add(cunli) : false)
         .map(({ cunli }) => {
             return {
                 value: cunli,
@@ -45,7 +49,7 @@ function getCunliOptions(arr, location) { //獲取里列表
 const SearchBox = ({ options, setCounty, setTown, setCunli, county, town }) => {
     const countyOptions = getCountyOptions(options)
     const townOptions = county ? getTownOptions(options, county) : []
-    const cunliOptions = town ? getCunliOptions(options, town) : []
+    const cunliOptions = town ? getCunliOptions(options, county,town) : []
 
     function locationChangeHandler(selectedOptions) {
         setCounty(selectedOptions.value)
