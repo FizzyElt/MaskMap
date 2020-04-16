@@ -1,7 +1,7 @@
 import React from 'react'
 import { Popup } from 'react-leaflet'
 import './MaskPopup.scss'
-import { openMaps } from './MapButton.jsx'
+import { openMaps } from '../PharmacyList/ConnectMapButton.jsx'
 
 const MaskPopup = ({ name, phone, mask_adult, mask_child, address, updated }) => {
     return (

@@ -28,6 +28,8 @@ function getTownOptions(arr, location) { //獲取地區列表(不重複)
         })
 }
 
+
+//搜尋
 const SearchBox = ({ options, setCounty, setTown, county }) => {
     const countyOptions = getCountyOptions(options)
     const townOptions = county ? getTownOptions(options, county) : []

@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import './PharmacyList.scss'
-import { MaskContext } from '../Context.js'
-import { openMaps } from './MapButton.jsx'
+import { MaskContext } from '../../Context.js'
+import { openMaps } from './ConnectMapButton.jsx'
 
 const PharamcyItem = ({ item }) => {
     const { position, setPosition } = useContext(MaskContext)
