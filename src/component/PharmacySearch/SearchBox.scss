@@ -1,9 +1,14 @@
 .select-box {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  margin: 20px 0;
+  margin: 20px 25px;
   .select {
-    width: 110px;
+    width: 150px;
+  }
+  .select_cunli{
+    width: 150px;
+    margin-left: 15px;
   }
   span {
     color: white;
@@ -18,8 +23,9 @@
 @media screen and(max-width:450px){
   .select-box{
     .select{
-      width: 90px;
+      width: 150px;
     }
+    
     span{
       margin: 8px;
       font-size: 16px;

@@ -76,7 +76,7 @@ const SearchBox = ({ options, setCounty, setTown, setCunli, county, town }) => {
             </div>
             <div> 
                 <span>里</span>
-                <Select className="select" options={cunliOptions} onChange={cunliChangeHandler} />
+                <Select className="select_cunli" options={cunliOptions} onChange={cunliChangeHandler} />
             </div>
         </div>
     );
