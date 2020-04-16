@@ -47,21 +47,28 @@ const MaskMap = () => {
             popupAnchor: [1, -34],
             shadowSize: [41, 41]
           });
-
+          const blueIcon = new L.Icon({
+            iconUrl:
+              "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
+            shadowUrl:
+              "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+          });
         return <MarkerClusterGroup setMarkerClusterObject={markerClusterObject}>
             {data.map(({ geometry, properties }) => {
-                console.log(properties.mask_adult)
+                var icon;
                 if(properties.mask_adult===0){
-                    return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id} icon={greyIcon}>
-                    <MaskPopup {...properties} />
-                    </Marker>
+                    icon = greyIcon;
                 }
                 else{
-                     return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id} >
+                    icon = blueIcon;
+                }
+                    return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id} icon={icon}>
                     <MaskPopup {...properties} />
                     </Marker>
-                }
-
             })}
         </MarkerClusterGroup>
     }, [data])
