@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import './PharmacyList.scss'
 import { MaskContext } from '../../Context.js'
-import { openMaps } from './ConnectMapButton.jsx'
+import ToGoogleMapButton from '../ToGoogleMapButton/ToGoogleMapButton.jsx'
 
 const PharamcyItem = ({ item }) => {
     const { position, setPosition } = useContext(MaskContext)
@@ -20,7 +20,7 @@ const PharamcyItem = ({ item }) => {
     return (<li>
         <h2 onClick={() => goLocation()}>{properties.name}</h2>
         <h3>{properties.address}</h3>
-        <div onClick={() => openMaps(properties.address, properties.name)} className="connectToMap">在 Google Maps 打開</div>
+        <ToGoogleMapButton data={properties.address} data2={properties.name}/>
         <h3>{properties.phone}</h3>
         <div>
             <h3 className={properties.mask_adult === 0 ? "no-mask" : ""}>
