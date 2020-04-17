@@ -20,7 +20,10 @@ const PharamcyItem = ({ item }) => {
     return (<li>
         <h2 onClick={() => goLocation()}>{properties.name}</h2>
         <h3>{properties.address}</h3>
-        <ToGoogleMapButton data={properties.address} data2={properties.name} />
+        <ToGoogleMapButton
+            pharmacyAddress={properties.address}
+            pharmacyName={properties.name}
+        />
         <h3>{properties.phone}</h3>
         <div>
             <h3 className={properties.mask_adult === 0 ? "no-mask" : ""}>
