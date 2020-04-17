@@ -33,14 +33,21 @@ const PharamcyItem = ({ item }) => {
     </li>)
 }
 
-const PharmacyList = ({ data, county, town,cunli }) => {
-    const list = useMemo(() => county && town //&& cunli 
-    ? data.filter(({ properties }) => {
-        return properties.county === county && properties.town === town //&& properties.cunli === cunli
-      }) : [], [town,data,county])
+const PharmacyList = ({ data, county, town, cunli }) => {
+    const list = useMemo(() => county && town && cunli
+        ? data.filter(({ properties }) => {
+            return properties.county === county && properties.town === town && properties.cunli === cunli
+        })
+          : county && town  ? data.filter(({properties})=>{
+            return  properties.county === county && properties.town === town
+          }) 
+
+        : [], [cunli, data, town, county]
+    )
     return (
         <ul className="pharmacy-list">
             {list.map(item => (<PharamcyItem item={item} key={item.properties.id} />))}
+            
         </ul>
     );
 }
