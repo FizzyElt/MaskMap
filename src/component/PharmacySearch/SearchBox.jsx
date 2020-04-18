@@ -29,7 +29,6 @@ function getTownOptions(arr, location) { //獲取地區列表
 }
 function getCunliOptions(arr, location) { //獲取里列表
     const set = new Set()
-    console.log('cunli')
     return arr.filter(({ town }) => {
         return town === location
     }).filter(({ cunli }) => !set.has(cunli) ? set.add(cunli) : false)
