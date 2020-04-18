@@ -31,11 +31,10 @@ function getCunliOptions(arr, location, li) { //獲取里列表
     return arr.filter(({ county }) => {
         return county === location
     })
-    .filter(({town}) =>{
-        console.log(town)
-        return town === li
-    }
-    ).filter(({ cunli }) => !set.has(cunli) ? set.add(cunli) : false)
+        .filter(({ town }) => {
+            return town === li
+        }
+        ).filter(({ cunli }) => !set.has(cunli) ? set.add(cunli) : false)
         .map(({ cunli }) => {
             return {
                 value: cunli,
@@ -49,7 +48,7 @@ function getCunliOptions(arr, location, li) { //獲取里列表
 const SearchBox = ({ options, setCounty, setTown, setCunli, county, town }) => {
     const countyOptions = getCountyOptions(options)
     const townOptions = county ? getTownOptions(options, county) : []
-    const cunliOptions = town ? getCunliOptions(options, county,town) : []
+    const cunliOptions = town ? getCunliOptions(options, county, town) : []
 
     function locationChangeHandler(selectedOptions) {
         setCounty(selectedOptions.value)
@@ -74,7 +73,7 @@ const SearchBox = ({ options, setCounty, setTown, setCunli, county, town }) => {
                 <span>地區</span>
                 <Select className="select" options={townOptions} onChange={townChangeHandler} />
             </div>
-            <div> 
+            <div>
                 <span>里</span>
                 <Select className="select select_cunli" options={cunliOptions} onChange={cunliChangeHandler} />
             </div>
