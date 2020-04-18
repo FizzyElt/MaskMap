@@ -25,7 +25,7 @@ const App = () => {
                 setIsLoading(false)
             })
             .catch(e => {
-                
+
             })
     }, []);
     useEffect(() => {       //獲取使用者位置
@@ -41,7 +41,6 @@ const App = () => {
         }
     }, [isLoading])
     return (
-        
         <MaskContext.Provider value={
             {
                 data: maskData,
