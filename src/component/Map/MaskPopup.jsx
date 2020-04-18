@@ -3,9 +3,9 @@ import { Popup } from 'react-leaflet'
 import './MaskPopup.scss'
 
 
-const MaskPopup = ({ name, phone, mask_adult, mask_child, address, updated }) => {
-    function openMaps(researchAddress) {
-        window.open(`http://maps.apple.com/maps?q=${researchAddress}`);
+const MaskPopup = ({ name, phone, mask_adult, mask_child, address, note, updated }) => {
+    const openMaps=(researchAddress)=>{
+        window.open(`http://maps.apple.com/maps?q=${researchAddress}`)
     }
     return (
         <Popup className="popup-container">
@@ -18,6 +18,7 @@ const MaskPopup = ({ name, phone, mask_adult, mask_child, address, updated }) =>
                     <h2 className={parseInt(mask_adult) === 0 ? 'no-mask' : ''}><span>成人口罩</span><span>{mask_adult}</span></h2>
                     <h2 className={parseInt(mask_child) === 0 ? 'no-mask' : ''}><span>兒童口罩</span><span>{mask_child}</span></h2>
                 </div>
+                <h3>{note}</h3>
                 <h3>資料更新:{updated}</h3>
             </div>
         </Popup>

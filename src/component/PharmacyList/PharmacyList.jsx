@@ -11,7 +11,7 @@ const PharamcyItem = ({ item }) => {
                 location: [geometry.coordinates[1], geometry.coordinates[0]],
                 zoom: 18,
             })
-            
+
         } else {
             return
         }
@@ -37,10 +37,11 @@ const PharamcyItem = ({ item }) => {
     </li>)
 }
 
-const PharmacyList = ({ data, county, town }) => {
-    const list = useMemo(() => county && town ? data.filter(({ properties }) => {
-        return properties.county === county && properties.town === town
-    }) : [], [town, data, county])
+const PharmacyList = ({ data, county, town, cunli }) => {
+    const list = useMemo(() => county && town && cunli
+        ? data.filter(({ properties }) => {
+            return properties.county === county && properties.town === town && properties.cunli === cunli
+        }) : [], [cunli, data, town, county])
     return (
         <ul className="pharmacy-list">
             {list.map(item => (<PharamcyItem item={item} key={item.properties.id} />))}

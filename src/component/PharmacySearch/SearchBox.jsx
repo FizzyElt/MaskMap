@@ -15,7 +15,7 @@ function getCountyOptions(arr) {    //獲取縣市列表(不重複)
         return result
     }, [])
 }
-function getTownOptions(arr, location) { //獲取地區列表(不重複)
+function getTownOptions(arr, location) { //獲取地區列表
     const set = new Set()
     return arr.filter(({ county }) => {
         return county === location
@@ -27,30 +27,53 @@ function getTownOptions(arr, location) { //獲取地區列表(不重複)
             }
         })
 }
+function getCunliOptions(arr, location) { //獲取里列表
+    const set = new Set()
+    console.log('cunli')
+    return arr.filter(({ town }) => {
+        return town === location
+    }).filter(({ cunli }) => !set.has(cunli) ? set.add(cunli) : false)
+        .map(({ cunli }) => {
+            return {
+                value: cunli,
+                label: cunli
+            }
+        })
+}
 
 
 //搜尋
-const SearchBox = ({ options, setCounty, setTown, county }) => {
+const SearchBox = ({ options, setCounty, setTown, setCunli, county, town, cunli }) => {
     const countyOptions = getCountyOptions(options)
     const townOptions = county ? getTownOptions(options, county) : []
+    const cunliOptions = town ? getCunliOptions(options, town) : []
 
     function locationChangeHandler(selectedOptions) {
         setCounty(selectedOptions.value)
         setTown("")
+        setCunli("")
     }
     function townChangeHandler(selectedOptions) {
         setTown(selectedOptions.value)
+        setCunli("")
+    }
+    function cunliChangeHandler(selectedOptions) {
+        setCunli(selectedOptions.value)
     }
 
     return (
         <div className="select-box">
             <div>
                 <span>縣市</span>
-                <Select className="select" options={countyOptions} onChange={locationChangeHandler} />
+                <Select className={"select " + (!county? "select-active" : "")} options={countyOptions} onChange={locationChangeHandler} />
             </div>
             <div>
                 <span>地區</span>
-                <Select className="select" options={townOptions} onChange={townChangeHandler} />
+                <Select className={"select " + (county && !town ? "select-active" : "")} options={townOptions} onChange={townChangeHandler} />
+            </div>
+            <div>
+                <span>里</span>
+                <Select className={"select " + (town && !cunli ? "select-active" : "")} options={cunliOptions} onChange={cunliChangeHandler} />
             </div>
         </div>
     );
