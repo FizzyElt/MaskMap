@@ -62,7 +62,7 @@ const MaskMap = () => {
                 const icon = isMaskStockOut? StockOutIcon:InStockIcon;
                     return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id} icon={icon}>
                     <MaskPopup {...properties} />
-                    </Marker>
+                </Marker>
             })}
         </MarkerClusterGroup>
     }, [data])
