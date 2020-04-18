@@ -33,36 +33,40 @@ const markerClusterObject = {
         })
     }
 }
+
 const StockOutIcon = new L.Icon({
-    iconUrl:
-      "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png",
-    shadowUrl:
-      "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+    iconUrl: "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png",
+    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
-  });
-  const InStockIcon = new L.Icon({
-    iconUrl:
-      "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
-    shadowUrl:
-      "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+});
+
+const InStockIcon = new L.Icon({
+    iconUrl: "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
+    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
-  });
+});
+
 const MaskMap = () => {
-    const { data, position, zoom} = useContext(MaskContext)
+    const { data, position, zoom } = useContext(MaskContext)
     const markerClusterGroup = useMemo(() => {
         return <MarkerClusterGroup setMarkerClusterObject={markerClusterObject}>
             {data.map(({ geometry, properties }) => {
                 const isMaskStockOut = properties.mask_adult === 0;
-                const icon = isMaskStockOut? StockOutIcon:InStockIcon;
-                    return <Marker position={[geometry.coordinates[1], geometry.coordinates[0]]} key={properties.id} icon={icon}>
-                    <MaskPopup {...properties} />
-                </Marker>
+                const icon = isMaskStockOut ? StockOutIcon : InStockIcon;
+                const latitude = geometry.coordinates[1];
+                const longitude = geometry.coordinates[0];
+                return <Marker
+                    position={[latitude, longitude]}
+                    key={properties.id}
+                    icon={icon}
+                    children={<MaskPopup {...properties} />}
+                />
             })}
         </MarkerClusterGroup>
     }, [data])
@@ -81,7 +85,7 @@ const MaskMap = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             ></TileLayer>
             {
-               markerClusterGroup
+                markerClusterGroup
             }
         </Map>
     );
