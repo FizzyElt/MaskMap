@@ -28,15 +28,19 @@ const PharmacySearch = () => {
 
     return (
         <div className={"pharmacy-container " + (control ? "" : "close")}>
-            <Today />
-            <SearchBox options={optionsfilter(data)}
-                county={county}
-                setCounty={setCounty}
-                setTown={setTown} 
-                setCunli={setCunli}
+            <div>
+                <Today />
+                <SearchBox options={optionsfilter(data)}
+                    county={county}
+                    town={town}
+                    cunli={cunli}
+                    setCounty={setCounty}
+                    setTown={setTown}
+                    setCunli={setCunli}
                 />
+            </div>
             <PharmacyList data={data} county={county} town={town} cunli={cunli}
-             />
+            />
             <button onClick={() => setControl(!control)}>&#10093;</button>
         </div>
     );

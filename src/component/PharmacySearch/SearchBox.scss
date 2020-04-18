@@ -1,9 +1,12 @@
 .select-box {
+  width: 50%;
   display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
+  flex-direction: column;
   .select {
-    width: 110px;
+    box-sizing: border-box;
+    width: 120px;
+    transition: all 0.2s;
+    margin-right: 8px;
   }
   span {
     color: white;
@@ -11,9 +14,16 @@
     margin-right: 15px;
   }
   > div {
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    margin:6px auto;
   }
+}
+.select-active{
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px 3px rgb(255, 76, 76);
 }
 @media screen and(max-width:450px){
   .select-box{

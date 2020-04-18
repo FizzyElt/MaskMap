@@ -8,6 +8,9 @@
   background-color: #73c0d8;
   transform: translateX(0);
   transition: transform 0.5s ease-in;
+  >div{
+    display: flex;
+  }
   button {
     outline: none;
     cursor: pointer;

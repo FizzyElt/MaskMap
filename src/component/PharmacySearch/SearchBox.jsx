@@ -29,6 +29,7 @@ function getTownOptions(arr, location) { //獲取地區列表
 }
 function getCunliOptions(arr, location) { //獲取里列表
     const set = new Set()
+    console.log('cunli')
     return arr.filter(({ town }) => {
         return town === location
     }).filter(({ cunli }) => !set.has(cunli) ? set.add(cunli) : false)
@@ -42,7 +43,7 @@ function getCunliOptions(arr, location) { //獲取里列表
 
 
 //搜尋
-const SearchBox = ({ options, setCounty, setTown, setCunli, county, town }) => {
+const SearchBox = ({ options, setCounty, setTown, setCunli, county, town, cunli }) => {
     const countyOptions = getCountyOptions(options)
     const townOptions = county ? getTownOptions(options, county) : []
     const cunliOptions = town ? getCunliOptions(options, town) : []
@@ -64,15 +65,15 @@ const SearchBox = ({ options, setCounty, setTown, setCunli, county, town }) => {
         <div className="select-box">
             <div>
                 <span>縣市</span>
-                <Select className="select" options={countyOptions} onChange={locationChangeHandler} />
+                <Select className={"select " + (!county? "select-active" : "")} options={countyOptions} onChange={locationChangeHandler} />
             </div>
             <div>
                 <span>地區</span>
-                <Select className="select" options={townOptions} onChange={townChangeHandler} />
+                <Select className={"select " + (county && !town ? "select-active" : "")} options={townOptions} onChange={townChangeHandler} />
             </div>
-            <div> 
+            <div>
                 <span>里</span>
-                <Select className="select" options={cunliOptions} onChange={cunliChangeHandler} />
+                <Select className={"select " + (town && !cunli ? "select-active" : "")} options={cunliOptions} onChange={cunliChangeHandler} />
             </div>
         </div>
     );
