@@ -18,7 +18,7 @@ const App = () => {
         zoom: defaultState.zoom,
     })
     const [isLoading, setIsLoading] = useState(true)
-    useEffect(() => {   //獲取資料 
+    useEffect(() => {   //獲取資料
         getData()
             .then(res => {
                 setMaskData(res)
