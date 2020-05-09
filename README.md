@@ -2,6 +2,11 @@
 
 ### [作品連結](https://taiwan-mask-map.netlify.com/)
 
+
+QRcode
+
+![](./QRcode.png)
+
 ### 特殊問題
 
 * 修改react-leaflet-markercluster原始碼讓leaflet.markercluster套件可接收react組件(已解決)
