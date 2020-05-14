@@ -51,22 +51,25 @@ function getCunliOptions(arr, location) {
 }
 
 //搜尋
-const SearchBox = ({ options, setCounty, setTown, setCunli, county, town, cunli }) => {
+const SearchBox = ({ options, county, town, cunli, setAddress }) => {
   const countyOptions = getCountyOptions(options)
   const townOptions = county ? getTownOptions(options, county) : []
   const cunliOptions = town ? getCunliOptions(options, town) : []
 
   function locationChangeHandler(selectedOptions) {
-    setCounty(selectedOptions.value)
-    setTown('')
-    setCunli('')
+    setAddress({ type: 'updateCounty', payload: selectedOptions.value })
+    // setCounty(selectedOptions.value)
+    // setTown('')
+    // setCunli('')
   }
   function townChangeHandler(selectedOptions) {
-    setTown(selectedOptions.value)
-    setCunli('')
+    setAddress({ type: 'updateTown', payload: selectedOptions.value })
+    // setTown(selectedOptions.value)
+    // setCunli('')
   }
   function cunliChangeHandler(selectedOptions) {
-    setCunli(selectedOptions.value)
+    setAddress({ type: 'updateCunli', payload: selectedOptions.value })
+    // setCunli(selectedOptions.value)
   }
 
   return (
