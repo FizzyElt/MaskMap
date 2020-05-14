@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Popup } from 'react-leaflet'
-import './MaskPopup.scss'
+
 import ToGoogleMapButton from '../ToGoogleMapButton/ToGoogleMapButton.jsx'
+import { Popup } from 'react-leaflet'
+
+import './MaskPopup.scss'
 
 const MaskPopup = ({ name, phone, mask_adult, mask_child, address, note, updated }) => {
     return (

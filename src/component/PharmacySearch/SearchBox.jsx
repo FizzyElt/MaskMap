@@ -58,18 +58,14 @@ const SearchBox = ({ options, county, town, cunli, setAddress }) => {
 
   function locationChangeHandler(selectedOptions) {
     setAddress({ type: 'updateCounty', payload: selectedOptions.value })
-    // setCounty(selectedOptions.value)
-    // setTown('')
-    // setCunli('')
+
   }
   function townChangeHandler(selectedOptions) {
     setAddress({ type: 'updateTown', payload: selectedOptions.value })
-    // setTown(selectedOptions.value)
-    // setCunli('')
+
   }
   function cunliChangeHandler(selectedOptions) {
     setAddress({ type: 'updateCunli', payload: selectedOptions.value })
-    // setCunli(selectedOptions.value)
   }
 
   return (
@@ -104,9 +100,7 @@ const SearchBox = ({ options, county, town, cunli, setAddress }) => {
 
 SearchBox.propType = {
   options: PropTypes.array,
-  setCounty: PropTypes.func,
-  setTown: PropTypes.func,
-  setCunli: PropTypes.func,
+  setAddress:PropTypes.func,
   county: PropTypes.string,
   town: PropTypes.string,
   cunli: PropTypes.string,

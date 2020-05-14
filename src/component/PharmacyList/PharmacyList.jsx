@@ -1,8 +1,11 @@
 import React, { useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import './PharmacyList.scss'
-import { MaskContext } from '../../Context.js'
+
 import ToGoogleMapButton from '../ToGoogleMapButton/ToGoogleMapButton.jsx'
+
+import './PharmacyList.scss'
+
+import { MaskContext } from '../../Context.js'
 
 const PharamcyItem = ({ item }) => {
   const { position, setPosition } = useContext(MaskContext)
@@ -36,8 +39,8 @@ const PharamcyItem = ({ item }) => {
     </li>
   )
 }
-PharamcyItem.propTypes={
-    item:PropTypes.object
+PharamcyItem.propTypes = {
+  item: PropTypes.object,
 }
 
 const PharmacyList = ({ data, county, town, cunli }) => {
@@ -58,11 +61,11 @@ const PharmacyList = ({ data, county, town, cunli }) => {
     </ul>
   )
 }
-PharmacyList.propTypes={
-    data:PropTypes.array,
-    county:PropTypes.string,
-    town:PropTypes.string,
-    cunli:PropTypes.string
+PharmacyList.propTypes = {
+  data: PropTypes.array,
+  county: PropTypes.string,
+  town: PropTypes.string,
+  cunli: PropTypes.string,
 }
 
 export default PharmacyList
