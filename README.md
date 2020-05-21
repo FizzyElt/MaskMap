@@ -1,16 +1,16 @@
 ## 網頁前端精神時光屋 第十關 口罩地圖
+***
 
 ### [作品連結](https://taiwan-mask-map.netlify.com/)
 
+### Demo
+![](./demo.gif)
 
-QRcode
+### QRcode
 
 ![](./QRcode.png)
 
-### 特殊問題
-
-* 修改react-leaflet-markercluster原始碼讓leaflet.markercluster套件可接收react組件(已解決)
-* 位置傳送功能反應速度較慢(已解決)
+***
 
 ### 使用工具及框架
 
@@ -22,12 +22,14 @@ QRcode
 * react-select
 * SCSS
 
-### 協作者名單
+### 專案貢獻者名單
 [jimmyliaoviva](https://github.com/jimmyliaoviva)(圖標顏色判斷)
 
 [Eddie Hsieh](https://github.com/zxcx98738)(新增鄉里選擇)
 
 [tpshan](https://github.com/tpshan)(新增Google Map連結按鈕)
+
+* * *
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
