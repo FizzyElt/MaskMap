@@ -16,11 +16,13 @@ function optionsfilter(arr) {
   })
   return result
 }
+
 const initAddress = {
   county: '',
   town: '',
   cunli: '',
 }
+
 function reducer(state, action) {
   switch (action.type) {
     case 'updateCounty':
@@ -44,13 +46,7 @@ const PharmacySearch = () => {
     <div className={'pharmacy-container ' + (control ? '' : 'close')}>
       <div>
         <Today />
-        <SearchBox
-          options={optionsfilter(data)}
-          county={county}
-          town={town}
-          cunli={cunli}
-          setAddress={dispatch}
-        />
+        <SearchBox options={optionsfilter(data)} county={county} town={town} cunli={cunli} setAddress={dispatch} />
       </div>
       <PharmacyList data={data} county={county} town={town} cunli={cunli} />
       <button onClick={() => setControl(!control)}>&#10093;</button>

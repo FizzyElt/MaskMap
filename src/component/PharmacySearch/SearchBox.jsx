@@ -98,7 +98,7 @@ const SearchBox = ({ options, county, town, cunli, setAddress }) => {
   )
 }
 
-SearchBox.propType = {
+SearchBox.propTypes = {
   options: PropTypes.array,
   setAddress:PropTypes.func,
   county: PropTypes.string,

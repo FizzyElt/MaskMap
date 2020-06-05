@@ -12,7 +12,6 @@ const defaultState = {
 }
 
 const App = () => {
-
   const [maskData, setMaskData] = useState([])
   const [position, setPosition] = useState({
     location: [defaultState.lat, defaultState.lng],
@@ -28,7 +27,9 @@ const App = () => {
         setMaskData(res)
         setIsLoading(false)
       })
-      .catch(e => {})
+      .catch(() => {
+        setIsLoading(false)
+      })
   }, [])
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const App = () => {
       }
     }
   }, [isLoading])
-  
+
   return (
     <MaskContext.Provider
       value={{
