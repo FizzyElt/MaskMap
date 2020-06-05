@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
+
+//component
 import MaskMap from './component/Map/MaskMap.jsx'
 import PharmacySearch from './component/PharmacySearch/PharmacySearch.jsx'
 import Loading from './component/Loading/Loading.jsx'
+import PositionBtn from './component/PositionBtn/PositionBtn.jsx'
+
 import { getData } from './fetchData.js'
 import { MaskContext } from './Context.js'
 
@@ -16,6 +20,12 @@ const App = () => {
   const [position, setPosition] = useState({
     location: [defaultState.lat, defaultState.lng],
     zoom: defaultState.zoom,
+  })
+
+  //使用者位置
+  const [userPosition, setUserPosition] = useState({
+    location: [-1, -1],
+    zoom: 0,
   })
 
   const [isLoading, setIsLoading] = useState(true)
@@ -36,12 +46,22 @@ const App = () => {
     //獲取使用者位置
     if (!isLoading) {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(p => {
-          setPosition({
-            location: [p.coords.latitude, p.coords.longitude],
-            zoom: 18,
-          })
-        })
+        navigator.geolocation.getCurrentPosition(
+          p => {
+            const obj = {
+              location: [p.coords.latitude, p.coords.longitude],
+              zoom: 18,
+            }
+            setPosition(obj)
+            setUserPosition(obj)
+          },
+          () => {
+            setUserPosition({
+              location: [-1, -1],
+              zoom: 0,
+            })
+          }
+        )
       }
     }
   }, [isLoading])
@@ -51,14 +71,14 @@ const App = () => {
       value={{
         data: maskData,
         position: position.location,
+        userPosition: userPosition,
         zoom: position.zoom,
-        setPosition: obj => {
-          setPosition(obj)
-        },
+        setPosition,
       }}>
       <div className='container'>
         <MaskMap />
         <PharmacySearch />
+        <PositionBtn loading={isLoading} setPosition={setPosition} setUserPosition={setUserPosition} />
         {isLoading ? <Loading /> : null}
       </div>
     </MaskContext.Provider>

@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
+//component
 import ToGoogleMapButton from '../ToGoogleMapButton/ToGoogleMapButton.jsx'
 
 import './PharmacyList.scss'

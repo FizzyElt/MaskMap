@@ -1,9 +1,12 @@
 import React, { useContext, useState, useReducer } from 'react'
-import './PharmacySearch.scss'
+
+//component
 import SearchBox from './SearchBox.jsx'
 import PharmacyList from '../PharmacyList/PharmacyList.jsx'
 import Today from '../Today/Today.jsx'
+
 import { MaskContext } from '../../Context.js'
+import './PharmacySearch.scss'
 
 //將Select需要的搜索項目先提出來
 function optionsfilter(arr) {

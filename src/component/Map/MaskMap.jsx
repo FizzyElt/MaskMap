@@ -1,10 +1,11 @@
 import React, { useContext, useMemo } from 'react'
-
 import { Map, TileLayer, Marker } from 'react-leaflet'
+
+//component
 import MarkerClusterGroup from './MarkerClusterGroup.jsx'
 import MaskPopup from './MaskPopup.jsx'
 
-import { InStockIcon, StockOutIcon } from '../../constant.js'
+import { InStockIcon, StockOutIcon, PositionkIcon } from '../../constant.js'
 import { MaskContext } from '../../Context.js'
 import L from 'leaflet'
 
@@ -36,7 +37,9 @@ const markerClusterObject = {
   },
 }
 const MaskMap = () => {
-  const { data, position, zoom } = useContext(MaskContext)
+  const { data, position, zoom, userPosition } = useContext(MaskContext)
+
+  //藥局 MarkerClusterGroup
   const markerClusterGroup = useMemo(() => {
     return (
       <MarkerClusterGroup setMarkerClusterObject={markerClusterObject}>
@@ -56,6 +59,7 @@ const MaskMap = () => {
       </MarkerClusterGroup>
     )
   }, [data])
+
   return (
     <Map
       center={[22.779538, 120.35217]}
@@ -70,6 +74,7 @@ const MaskMap = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'></TileLayer>
       {markerClusterGroup}
+      {userPosition.zoom !== 0 ? <Marker position={userPosition.location} icon={PositionkIcon} /> : null}
     </Map>
   )
 }

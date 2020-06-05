@@ -1,0 +1,19 @@
+.position-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 8px;
+    height: 2.5em;
+    width: 4em;
+    font-size: 16px;
+    z-index: 500;
+    border-radius: 4px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.position-btn:hover{
+    box-shadow: 0 0 8px 6px rgba(0, 0, 0, 0.5);
+}
