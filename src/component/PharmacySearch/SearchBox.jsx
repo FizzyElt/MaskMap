@@ -58,11 +58,9 @@ const SearchBox = ({ options, county, town, cunli, setAddress }) => {
 
   function locationChangeHandler(selectedOptions) {
     setAddress({ type: 'updateCounty', payload: selectedOptions.value })
-
   }
   function townChangeHandler(selectedOptions) {
     setAddress({ type: 'updateTown', payload: selectedOptions.value })
-
   }
   function cunliChangeHandler(selectedOptions) {
     setAddress({ type: 'updateCunli', payload: selectedOptions.value })
@@ -100,7 +98,7 @@ const SearchBox = ({ options, county, town, cunli, setAddress }) => {
 
 SearchBox.propTypes = {
   options: PropTypes.array,
-  setAddress:PropTypes.func,
+  setAddress: PropTypes.func,
   county: PropTypes.string,
   town: PropTypes.string,
   cunli: PropTypes.string,

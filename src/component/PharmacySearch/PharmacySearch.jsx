@@ -9,7 +9,7 @@ import { MaskContext } from '../../Context.js'
 import './PharmacySearch.scss'
 
 //將Select需要的搜索項目先提出來
-function optionsfilter(arr) {
+function optionsFilter(arr) {
   const result = arr.map(({ properties }) => {
     return {
       county: properties.county,
@@ -49,7 +49,7 @@ const PharmacySearch = () => {
     <div className={'pharmacy-container ' + (control ? '' : 'close')}>
       <div>
         <Today />
-        <SearchBox options={optionsfilter(data)} county={county} town={town} cunli={cunli} setAddress={dispatch} />
+        <SearchBox options={optionsFilter(data)} county={county} town={town} cunli={cunli} setAddress={dispatch} />
       </div>
       <PharmacyList data={data} county={county} town={town} cunli={cunli} />
       <button onClick={() => setControl(!control)}>&#10093;</button>

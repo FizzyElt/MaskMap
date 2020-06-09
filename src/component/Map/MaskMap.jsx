@@ -48,10 +48,10 @@ const MaskMap = () => {
 
           const icon = isMaskStockOut ? StockOutIcon : InStockIcon
           const latitude = geometry.coordinates[1]
-          const longtitude = geometry.coordinates[0]
+          const longitude = geometry.coordinates[0]
 
           return (
-            <Marker position={[latitude, longtitude]} key={properties.id} icon={icon}>
+            <Marker position={[latitude, longitude]} key={properties.id} icon={icon}>
               <MaskPopup {...properties} />
             </Marker>
           )

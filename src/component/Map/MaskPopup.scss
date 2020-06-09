@@ -1,21 +1,21 @@
-.mask-popup{
-    >*+*{
-        margin-top: 10px;;
+.mask-popup {
+    > * + * {
+        margin-top: 10px;
     }
-    h3{
+    h3 {
         color: #666666;
     }
-    h3:last-of-type{
+    h3:last-of-type {
         text-align: center;
     }
 }
-.popup-container{
+.popup-container {
     width: fit-content;
 }
-.mask-box{
+.mask-box {
     display: flex;
-    h2{
-        padding:0 10px;
+    h2 {
+        padding: 0 10px;
         font-size: 15px;
         color: white;
         height: 30px;
@@ -26,16 +26,16 @@
         justify-content: space-between;
         align-items: center;
     }
-    h2:first-child{
+    h2:first-child {
         margin-right: 10px;
-        border-radius:15px;
-        background-color: #73C0D8;
-    }
-    h2:last-of-type{
         border-radius: 15px;
-        background-color: #FFA573;
+        background-color: #73c0d8;
     }
-    h2.no-mask{
-        background-color: #A5A5A5;
+    h2:last-of-type {
+        border-radius: 15px;
+        background-color: #ffa573;
+    }
+    h2.no-mask {
+        background-color: #a5a5a5;
     }
 }

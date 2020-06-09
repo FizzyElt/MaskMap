@@ -11,7 +11,7 @@
     max-width: calc(100% - 20px);
     font-size: 40px;
   }
-  div {  
+  div {
     max-width: calc(100% - 20px);
     text-align: left;
     span {
@@ -19,8 +19,8 @@
       color: #fff126;
     }
   }
-  .text{
-   word-wrap: normal;
+  .text {
+    word-wrap: normal;
   }
 }
 @media screen and(max-width:450px) {
@@ -35,9 +35,9 @@
         font-size: 20px;
       }
     }
-    .text{
+    .text {
       margin-top: 10px;
       word-break: break-all;
-     }
+    }
   }
 }

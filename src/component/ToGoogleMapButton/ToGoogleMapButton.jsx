@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import './ToGoogleMapButton.scss'
 
 class ToGoogleMapButton extends React.Component {
-
   openMaps(pharmacyAddress, pharmacyName) {
     const ADDRESS_LENGTH_FOR_ROAD = 9
     const addressToRoad = pharmacyAddress.substring(0, ADDRESS_LENGTH_FOR_ROAD)

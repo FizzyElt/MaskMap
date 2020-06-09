@@ -8,10 +8,10 @@ import './PharmacyList.scss'
 
 import { MaskContext } from '../../Context.js'
 
-const PharamcyItem = ({ item }) => {
+const PharmacyItem = ({ item }) => {
   const { position, setPosition } = useContext(MaskContext)
   const { properties, geometry } = item
-  function goLocation() {
+  function goPosition() {
     if (position[0] !== geometry.coordinates[1] && position[1] !== geometry.coordinates[0]) {
       setPosition({
         location: [geometry.coordinates[1], geometry.coordinates[0]],
@@ -23,7 +23,7 @@ const PharamcyItem = ({ item }) => {
   }
   return (
     <li>
-      <h2 onClick={() => goLocation()}>{properties.name}</h2>
+      <h2 onClick={() => goPosition()}>{properties.name}</h2>
       <h3>{properties.address}</h3>
       <ToGoogleMapButton pharmacyAddress={properties.address} pharmacyName={properties.name} />
       <h3>{properties.phone}</h3>
@@ -40,7 +40,7 @@ const PharamcyItem = ({ item }) => {
     </li>
   )
 }
-PharamcyItem.propTypes = {
+PharmacyItem.propTypes = {
   item: PropTypes.object,
 }
 
@@ -57,7 +57,7 @@ const PharmacyList = ({ data, county, town, cunli }) => {
   return (
     <ul className='pharmacy-list'>
       {list.map(item => (
-        <PharamcyItem item={item} key={item.properties.id} />
+        <PharmacyItem item={item} key={item.properties.id} />
       ))}
     </ul>
   )

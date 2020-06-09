@@ -15,7 +15,7 @@
       cursor: pointer;
       transition: 0.3s;
       &:hover {
-          color: #5b8b99;
+        color: #5b8b99;
       }
     }
 
@@ -48,10 +48,10 @@
     }
   }
 }
-@media screen and (max-width:450px){
-  .pharmacy-list{
-    div{
-      h3{
+@media screen and (max-width: 450px) {
+  .pharmacy-list {
+    div {
+      h3 {
         font-size: 15px;
       }
     }
