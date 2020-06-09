@@ -4,11 +4,13 @@
 ### [作品連結](https://taiwan-mask-map.netlify.com/)
 
 ### Demo
-![](./demo.gif)
+![](./img/demo.gif)
 
 ### QRcode
 
-![](./QRcode.png)
+![](./img/QRcode.png)
+
+### [專案結構圖](https://github.com/FizzyElt/MaskMap/blob/master/Structure.md)
 
 ***
 
