@@ -23,10 +23,9 @@ function getTownOptions(arr, location) {
   //獲取地區列表
   const set = new Set()
   return arr
-    .filter(({ county }) => {
-      return county === location
+    .filter(({ county, town }) => {
+      return county === location && (!set.has(town) ? set.add(town) : false)
     })
-    .filter(({ town }) => (!set.has(town) ? set.add(town) : false))
     .map(({ town }) => {
       return {
         value: town,
@@ -38,10 +37,9 @@ function getCunliOptions(arr, location) {
   //獲取里列表
   const set = new Set()
   return arr
-    .filter(({ town }) => {
-      return town === location
+    .filter(({ town, cunli }) => {
+      return town === location && (!set.has(cunli) ? set.add(cunli) : false)
     })
-    .filter(({ cunli }) => (!set.has(cunli) ? set.add(cunli) : false))
     .map(({ cunli }) => {
       return {
         value: cunli,
