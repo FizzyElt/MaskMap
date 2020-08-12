@@ -24,7 +24,7 @@ export const InStockIcon = new L.Icon({
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
 })
-export const PositionkIcon = new L.Icon({
+export const PositionIcon = new L.Icon({
   iconUrl: positionIcon,
   iconSize: [60, 80],
   iconAnchor: [0, 80],

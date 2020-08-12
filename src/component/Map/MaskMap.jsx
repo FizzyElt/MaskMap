@@ -5,7 +5,7 @@ import { Map, TileLayer, Marker } from 'react-leaflet'
 import MarkerClusterGroup from './MarkerClusterGroup.jsx'
 import MaskPopup from './MaskPopup.jsx'
 
-import { InStockIcon, StockOutIcon, PositionkIcon } from '../../constant.js'
+import { InStockIcon, StockOutIcon, PositionIcon } from '../../constant.js'
 import { MaskContext } from '../../Context.js'
 import L from 'leaflet'
 
@@ -74,7 +74,7 @@ const MaskMap = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'></TileLayer>
       {markerClusterGroup}
-      {userPosition.zoom !== 0 ? <Marker position={userPosition.location} icon={PositionkIcon} /> : null}
+      {userPosition.zoom !== 0 ? <Marker position={userPosition.location} icon={PositionIcon} /> : null}
     </Map>
   )
 }
