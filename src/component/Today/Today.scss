@@ -1,40 +1,48 @@
 .today-box {
-  box-sizing: border-box;
-  width: 50%;
-  margin: 10px 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-start;
-  color: white;
+  justify-content: flex-start;
+  margin: 10px;
+  width: 50%;
+  color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  flex-direction: column;
+
   h2 {
     max-width: calc(100% - 20px);
     font-size: 40px;
   }
+
   div {
     max-width: calc(100% - 20px);
     text-align: left;
+
     span {
       font-size: 30px;
       color: #fff126;
     }
   }
+
   .text {
     word-wrap: normal;
   }
 }
-@media screen and(max-width:450px) {
+@media screen and(max-width: 450px) {
   .today-box {
     width: 40%;
+
     h2 {
       font-size: 30px;
     }
+
     div {
       width: 180px;
+
       span {
         font-size: 20px;
       }
     }
+
     .text {
       margin-top: 10px;
       word-break: break-all;

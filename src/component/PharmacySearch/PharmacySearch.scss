@@ -1,38 +1,41 @@
 .pharmacy-container {
-  height: 100vh;
-  width: 450px;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2500;
+  width: 450px;
+  height: 100vh;
   background-color: #73c0d8;
-  transform: translateX(0);
+  z-index: 2500;
   transition: transform 0.5s ease-in;
-  >div{
+  transform: translateX(0);
+
+  >div {
     display: flex;
   }
+
   button {
-    outline: none;
-    cursor: pointer;
+    position: absolute;
     top: 150px;
     right: -30px;
-    position: absolute;
     width: 30px;
     height: 60px;
     font-size: 40px;
-    line-height: 1;
-    color: white;
+    color: rgb(255, 255, 255);
     background-color: #73c0d8;
-    border: none;
+    border-style: none;
     border-radius: 0 6px 6px 0;
+    outline: none;
+    cursor: pointer;
+    line-height: 1;
   }
 }
+
 .close {
   transform: translateX(-100%);
 }
 
-@media screen and(max-width:450px){
-  .pharmacy-container{
+@media screen and(max-width: 450px) {
+  .pharmacy-container {
     width: 300px;
   }
 }
